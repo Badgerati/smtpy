@@ -1,7 +1,7 @@
 smtpy
 =====
 
-As of later I've has a lot of hassle with QA, regression runs and dev PCs when it comes to sending out email from testing a web app.
+As of late I've has a lot of hassle with QA, regression runs and dev PCs when it comes to sending out email from testing a web app.
 Most of them have an SMTP server - but it's absolutely rubbish and fills up way too quickly and then dies miserably.
 
 I created smtpy as a simple lightweight python Windows service which would run a mock SMTP server. This service would pick up all email that was sent to 127.0.0.1:25 and record it within a SQLite database. Further to that, after each insert to the database, the service would self-clean by deleting any emails that were older than 30 minutes.
