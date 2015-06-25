@@ -10,7 +10,7 @@ License: MIT (see LICENSE for details)
 
 settings = dict(
     # Location of the SQLite database (will be auto-created)
-    database = 'C:/Users/Badgerati/Documents/GitHub/smtpy/smtpy.db',
+    database = 'path/to/your/smtpy.db',
 
     # SMTP settings for host/port and service information
     smtp = dict(
