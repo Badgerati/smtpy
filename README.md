@@ -1,6 +1,8 @@
 smtpy
 =====
 
+(Pronouced: s-m-t-pee)
+
 As of late I've has a lot of hassle with QA, regression runs and dev PCs when it comes to sending out email from testing a web app.
 Most of them have an SMTP server - but it's absolutely rubbish and fills up way too quickly and then dies miserably.
 

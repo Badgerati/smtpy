@@ -29,7 +29,7 @@ import re
 import traceback
 import smtpy_config as config
 
-# This is the mock SMTP server that will be listening on the specified host/port.#
+# This is the mock SMTP server that will be listening on the specified host/port.
 # It will insert any email into the SQLite database - purging older emails if enabled.
 class MockSmtpServer(smtpd.SMTPServer):
 
@@ -39,15 +39,23 @@ class MockSmtpServer(smtpd.SMTPServer):
             matches = re.search('^.*?\'(?P<ip>.*?)\'.*?(?P<port>\d+).*?$', str(peer))
             ip = matches.group('ip')
             port = matches.group('port')
+            subject = ''
 
-            matches = re.search('Subject: (?P<subject>.+)', str(data))
-            subject = matches.group('subject')
+            # Split up the data and parse for modules
+            split_data = str(data).split('\\n')
+            for value in split_data:
+                if value.startswith('Subject: '):
+                    subject = value.replace('Subject: ', '')
+
+            # Split data again to retrieve the main body of the message
+            split_data_body = str(data).split('\\n\\n')
+            body = split_data_body[len(split_data_body) - 1]
 
             try:
                 # Store email in database
                 conn = sqlite3.connect(config.settings['database'])
                 sql = "INSERT INTO MailLog(IPAddress, PortNumber, Subject, Sender, Recipients, Body) VALUES (?, ?, ?, ?, ?, ?)"
-                conn.execute(sql, (str(ip), str(port), str(subject), str(mailfrom), str(rcpttos), str(data)))
+                conn.execute(sql, (str(ip), str(port), str(subject), str(mailfrom), str(rcpttos), str(body)))
                 conn.commit()
 
                 # If enabled, purge emails older than 30 minutes
@@ -62,11 +70,11 @@ class MockSmtpServer(smtpd.SMTPServer):
                     conn.close()
                 servicemanager.LogMsg(servicemanager.EVENTLOG_ERROR_TYPE,
                                   servicemanager.PYS_SERVICE_STARTED,
-                                  (self._svc_name_, str(e) + '\n' + traceback.format_exc()))
+                                  ('process_message', str(e) + '\n' + traceback.format_exc()))
         except Exception as e:
             servicemanager.LogMsg(servicemanager.EVENTLOG_ERROR_TYPE,
                                   servicemanager.PYS_SERVICE_STARTED,
-                                  (self._svc_name_, str(e) + '\n' + traceback.format_exc()))
+                                  ('process_message', str(e) + '\n' + traceback.format_exc()))
         return
 
 
