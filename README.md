@@ -1,7 +1,7 @@
 smtpy
 =====
 
-(Pronouced: s-m-t-pee)
+(Pronounced: s-m-t-pee)
 
 As of late I've has a lot of hassle with QA, regression runs and dev PCs when it comes to sending out email from testing a web app.
 Most of them have an SMTP server - but it's absolutely rubbish and fills up way too quickly and then dies miserably.
@@ -11,6 +11,7 @@ I created smtpy as a simple lightweight python Windows service which would run a
 Now I could run a regression without worrying about the server crumbling to pieces, and with the simple JSON REST API I could retrieve the emails from the SQLite database.
 
 Email sent from the webserver can now be directed to the localhost, and picked up by smtpy.
+
 
 Usage
 -----
@@ -43,3 +44,17 @@ Features
  * Supports UTF-8
  * Self cleaning so it doesn't gobble up memory
  * Lightweight
+
+
+API
+---
+
+All methods are accessed via the host:port that you specify in the smtpy_config.py.
+
+ * /retrieve/email?mailLogId=<mailLogId>
+ * /retrieve/emails?email=<emai>[&amount=<amount>]
+
+ * /create/email?sender=<sender>&recipients=<recipients>[&subject=<subject>&body=<body>&ip=<ip>&port=<port>]
+
+ * /delete/email?mailLogId=<mailLogId>
+ * /delete/emails?email=<emai>

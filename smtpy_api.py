@@ -1,16 +1,6 @@
 #! /usr/bin/env python3
 """
 Simple JSON REST API for the smtpy service using the bottle framework.
-Ony contains two retrievals currently:
-
-    - /email?email=<email>
-        This will retrieve the first entry in the database (if any) for
-        the supplied email address.
-
-    - /emails?email=<email>[&amount=<value>]
-        This will retrieve an amount of entries from the database for the
-        supplied email. If the amount parameter is omitted, it is defaulted
-        to 1.
 
 Copyright (c) 2015, Matthew Kelly (Badgerati)
 License: MIT (see LICENSE for details)
