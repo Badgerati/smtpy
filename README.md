@@ -15,7 +15,7 @@ Email sent from the webserver can now be directed to the localhost, and picked u
 Usage
 -----
 
-To use smtpy is simple. First you need to have the following dependencies installed:
+To use smtpy is simple. First you need to have the following dependencies installed: 
 
  * Python3
  * PyWin32
