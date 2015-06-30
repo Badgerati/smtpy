@@ -3,6 +3,7 @@
 This is the main Windows service for the smtpy API.
 
 Copyright (c) 2015, Matthew Kelly (Badgerati)
+Company: Cadaeic Studios
 License: MIT (see LICENSE for details)
 """
 

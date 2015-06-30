@@ -14,6 +14,7 @@ This Windows service will also automatically create the SQLite database
 if it doesn't yet exist, as well as the required table.
 
 Copyright (c) 2015, Matthew Kelly (Badgerati)
+Company: Cadaeic Studios
 License: MIT (see LICENSE for details)
 """
 

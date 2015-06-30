@@ -5,6 +5,7 @@ for settings like the location of the SQLite database, service names/description
 and the host/port for the SMTP/Web API to listen on.
 
 Copyright (c) 2015, Matthew Kelly (Badgerati)
+Company: Cadaeic Studios
 License: MIT (see LICENSE for details)
 """
 

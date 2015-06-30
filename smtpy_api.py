@@ -3,6 +3,7 @@
 Simple JSON REST API for the smtpy service using the bottle framework.
 
 Copyright (c) 2015, Matthew Kelly (Badgerati)
+Company: Cadaeic Studios
 License: MIT (see LICENSE for details)
 """
 
