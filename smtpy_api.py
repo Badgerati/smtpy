@@ -44,6 +44,9 @@ def retrieve_email():
             return {'error':'no mailLogId supplied'}
 
         try:
+            conn = None
+            curs = None
+            
             conn = sqlite3.connect(config.settings['database'])
             conn.row_factory = dict_factory
             curs = conn.cursor()
@@ -83,6 +86,9 @@ def retrieve_emails():
             amount = 1
 
         try:
+            conn = None
+            curs = None
+            
             conn = sqlite3.connect(config.settings['database'])
             conn.row_factory = dict_factory
             curs = conn.cursor()
@@ -128,6 +134,9 @@ def create_email():
             return {'error':'no recipients supplied'}
 
         try:
+            conn = None
+            curs = None
+            
             conn = sqlite3.connect(config.settings['database'])
             conn.row_factory = dict_factory
             curs = conn.cursor()
@@ -164,6 +173,9 @@ def delete_email():
             return {'error':'no mailLogId supplied'}
 
         try:
+            conn = None
+            curs = None
+            
             conn = sqlite3.connect(config.settings['database'])
             curs = conn.cursor()
             
@@ -194,6 +206,9 @@ def delete_emails():
             return {'error':'no email supplied'}
 
         try:
+            conn = None
+            curs = None
+            
             conn = sqlite3.connect(config.settings['database'])
             curs = conn.cursor()
             

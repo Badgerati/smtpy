@@ -54,6 +54,7 @@ class MockSmtpServer(smtpd.SMTPServer):
 
             try:
                 # Store email in database
+                conn = None
                 conn = sqlite3.connect(config.settings['database'])
                 sql = "INSERT INTO MailLog(IPAddress, PortNumber, Subject, Sender, Recipients, Body) VALUES (?, ?, ?, ?, ?, ?)"
                 conn.execute(sql, (str(ip), str(port), str(subject), str(mailfrom), str(rcpttos), str(body)))
@@ -92,6 +93,7 @@ class SmtpService(win32serviceutil.ServiceFramework):
 
         try:
             # Attempt to create the database and table
+            conn = None
             conn = sqlite3.connect(config.settings['database'])
             sql = """CREATE TABLE IF NOT EXISTS MailLog
                     (
